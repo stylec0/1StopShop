@@ -14,7 +14,7 @@ export default function SignUpPage(props) {
     email: '',
     password: '',
     passwordConf: '',
-    bio: ''
+    //bio: ''
   })
 
   const [selectedFile, setSelectedFile] = useState('')
@@ -32,33 +32,9 @@ export default function SignUpPage(props) {
   async function handleSubmit(e){
     e.preventDefault();
 
-    // create formData from our state
-    // you only to do this when you're sending over a file/photo
-
-    const formData = new FormData();
-
-    // add our photo to the formData
-    formData.append('photo', selectedFile);
-
-    // the same for the rest of our state
-    // option 1 
-    // add the state one by one
-    // formData.append('username', state.username)
-    // formData.append('email', state.email); // and so on
-
-    //option 2 use for .. in loop to append the rest of the items to our form Data
-
-    for (let key in state){
-      formData.append(key, state[key])
-    }
-
-    console.log(formData, ' <--- This Will show nothing!!')
-
-    console.log(formData.forEach((item) => console.log(item)), " <-- this is how you look inside form data")
-
     try {
 
-      await userService.signup(formData)
+      await userService.signup(state)
       // after we signup, we can navigare/and decode our token and set in local storage
       props.handleSignUpOrLogin() // <- get the token from localstorage and decode it
       // and set the user state in the App.js componennt
@@ -116,21 +92,6 @@ export default function SignUpPage(props) {
               onChange={handleChange}
               required
             />
-            <Form.TextArea
-              label="bio"
-              name="bio"
-              placeholder="Tell us more about your dogs..."
-              onChange={handleChange}
-            />
-            <Form.Field>
-              <Form.Input
-                type="file"
-                name="photo"
-                placeholder="upload image"
-                onChange={handleFileInput}
-                required
-              />
-            </Form.Field>
             <Button type="submit" className="btn">
               Signup
             </Button>
