@@ -1,19 +1,20 @@
-//import Items from "../models/item";
-//import vm from "v-response";
+const Item = require('../models/item');
 
-//exports.create_product = (req, res, next) => {
-//    let item_body = req.body;
-//    console.log(req.body, "<--req.body")
-//    const new_item = new Items(item_body);
-//    new_item.save()
-//        .then( onfulfilled: saved => {
-//            if (!saved) {
-//                return res.status(400)
-//                    .json(vm.ApiResponse(false, 400, "unable to save Item"))
-//            }
-//            if (saved) {
-//                return res.status(201)
-//                    .json(vm.)
-//            }
-//        })
-//}
+const BUCKET = process.env.BUCKET;
+
+module.exports = {
+    index
+}
+
+
+async function index(req, res) {
+	try {
+	  // this populates the user when you find the posts
+	  // so you'll have access to the users information
+	  // when you fetch teh posts
+	  const items = await Item.find({}).populate("user").exec();
+	  res.status(200).json({ items: items });
+	} catch (err) {
+	  res.status(400).json({ err });
+	}
+  }

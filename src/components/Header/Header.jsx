@@ -7,7 +7,7 @@ export default function Header(handleLogout) {
         <Navbar bg="primary" expand="lg" variant='dark'>
             <Container>
           <Navbar.Brand href="/">1StopShop</Navbar.Brand>
-          <Nav.Link href="#home">Home</Nav.Link>
+          <Nav.Link href="/home">Home</Nav.Link>
           <Nav.Link href="#home">LogOut</Nav.Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
