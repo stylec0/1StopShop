@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import Header from "../../components/Header/Header";
 import ItemsList from "../../components/ItemsList/ItemsList";
 import * as itemService from "../../utils/itemService"
+import userService from '../../utils/userService';
 
-export default function HomePage() {
+export default function HomePage(user, handleLogout) {
   const [items, setItems] = useState([]); 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -27,7 +28,7 @@ export default function HomePage() {
     }
   }
 
-  // R read in crud
+  // R read in crud 
   async function getItems() {
     try {
       const data = await itemService.getAll();
@@ -39,6 +40,17 @@ export default function HomePage() {
       setError(err.message);
     }
   }
+
+  async function logout() {
+    //e.preventDefault();
+    try {
+      await userService.logout()
+      handleLogout()
+      //Navigate("/")
+    } catch (err) {
+      setError(err.message)
+    }
+  }
   
   useEffect(() => {
     getItems();
@@ -46,7 +58,7 @@ export default function HomePage() {
 
     return (
         <>
-      <Header />
+      <Header user={user} logout={logout}/>
       
         <h1>This is the HomePage</h1>
         <ItemsList />
