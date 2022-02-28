@@ -1,16 +1,30 @@
 import React from "react";
+import { Card, Icon, Image } from 'semantic-ui-react'
+import { Link } from "react-router-dom";
 
-
-
-export default function ItemsCard(props,) {
+export default function ItemsCard(props, user) {
     console.log(props, "<--this is props from ItemsCard" );
-    
-	return (
-		<>
-					<h2>Put these in your cart!</h2>
-				 {props.itemName}
-					</>
-)}
+	console.log(props.items.itemName, "<--separating data" );
+
+return (
+	<>
+	<h2>Put these in your cart!</h2>
+
+	<Card key={props._id} raised>
+	
+	  <Card.Content textAlign="left">
+		<Card.Header>
+		 {props.itemName}
+		</Card.Header>
+	  </Card.Content>
+	
+	<Card.Content>
+	  <Card.Description>{props.Description}</Card.Description>
+	</Card.Content>
+  </Card>
+  </>
+)
+}
 
 
 //const ItemCard = function(props) {

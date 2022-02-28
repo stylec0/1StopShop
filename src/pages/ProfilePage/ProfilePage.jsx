@@ -38,20 +38,22 @@ export default function ProfilePage(props) {
 
         async function getProfile() {
             try {
-                const data = await userService.getProfile(username);
+                const data = await userService.getProfile("admin");
                 console.log(data, " <- data");
             
                 setLoading(() => false);
                 //setItems(() => data.items);
                 setUser(() => data.user);
+                
             }   catch (err) {
-                console.log(err);
+                console.log(err, "This is the error");
                 setLoading(() => false);
                 setError("Profile Does not exist!");
             }
         }
 
         getProfile();
+    //}, []);
     }, [username]);
 
     if (loading) {

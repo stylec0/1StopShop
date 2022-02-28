@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Item = require('../models/item');
 const jwt = require('jsonwebtoken');
 const SECRET = process.env.SECRET;
 const { v4: uuidv4 } = require('uuid');
@@ -23,6 +24,7 @@ async function profile(req, res){
     const items = await Item.find({user: user._id}).populate("user").exec();
     console.log(items, ' this items')
     res.status(200).json({items: items, user: user})
+    //res.status(200).json({user: user})
   } catch(err){
     console.log(err)
     res.status(400).json({err})

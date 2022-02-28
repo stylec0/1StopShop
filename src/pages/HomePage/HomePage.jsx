@@ -5,6 +5,7 @@ import * as itemService from "../../utils/itemService"
 import userService from '../../utils/userService';
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loading from "../../components/Loader/Loader";
+import ItemsCard from "../../components/ItemsCard/ItemsCard";
 
 export default function HomePage(user, handleLogout) {
   const [items, setItems] = useState([]); 
@@ -36,6 +37,7 @@ export default function HomePage(user, handleLogout) {
       const data = await itemService.getAll();
       console.log(data, " this is data,");
       setItems([...data.items]);
+     
       setLoading(false);
     } catch (err) {
       console.log(err.message, " this is the error");
@@ -81,7 +83,7 @@ export default function HomePage(user, handleLogout) {
       <Header user={user.user} logout={logout}/>
       
         <h1>This is the HomePage</h1>
-        <ItemsList />
+        <ItemsList items={items}/>
      
         </>
     );
