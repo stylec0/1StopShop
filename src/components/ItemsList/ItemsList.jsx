@@ -4,6 +4,6 @@ import React from 'react';
 export default function ItemsList() { 
 
     return (
-        <h1>test</h1>
+        <h1>This is the Items List</h1>
     )
     }

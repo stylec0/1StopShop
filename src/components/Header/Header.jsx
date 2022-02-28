@@ -1,10 +1,10 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
 import { Button, Form, FormControl, Nav, Navbar, NavDropdown, Container } from 'react-bootstrap';
 
 
-export default function Header( user, logout ) {
-  console.log(user, '<---user in header', logout, "<---Handlelogout")
+export default function Header( {user} ) {
+  console.log(user, '<---user in header')
     return (
         <Navbar bg="primary" expand="lg" variant='dark'>
             <Container>
@@ -14,7 +14,7 @@ export default function Header( user, logout ) {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav>
-              <Nav.Link href="/:username">My Profile</Nav.Link>
+              <Nav.Link href={`/${user.username}`}>My Profile</Nav.Link>
               <Nav.Link href="#home">My Cart</Nav.Link>
               <Nav.Link href="/login" onClick={user.logout}>LogOut</Nav.Link>
               </Nav>

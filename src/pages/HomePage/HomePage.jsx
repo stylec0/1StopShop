@@ -3,6 +3,8 @@ import Header from "../../components/Header/Header";
 import ItemsList from "../../components/ItemsList/ItemsList";
 import * as itemService from "../../utils/itemService"
 import userService from '../../utils/userService';
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import Loading from "../../components/Loader/Loader";
 
 export default function HomePage(user, handleLogout) {
   const [items, setItems] = useState([]); 
@@ -56,9 +58,27 @@ export default function HomePage(user, handleLogout) {
     getItems();
   }, []);
 
+  if (loading) {
+    return (
+      <>
+        <Header handleLogout={handleLogout} user={user} />
+        <Loading />
+      </>
+    );
+  }
+
+  if (error) {
+    return (
+      <>
+        <Header handleLogout={handleLogout} user={user} />
+        <ErrorMessage error={error} />;
+      </>
+    );
+  }
+
     return (
         <>
-      <Header user={user} logout={logout}/>
+      <Header user={user.user} logout={logout}/>
       
         <h1>This is the HomePage</h1>
         <ItemsList />
