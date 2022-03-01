@@ -10,7 +10,7 @@ import HomePage from "../HomePage/HomePage";
 
 function App() {
   //const [items, setItems] = useState(itemService.getAll());
-	//const [cart, setCart] = useState([]);
+	const [cart, setCart] = useState([]);
 
   const [user, setUser] = useState(userService.getUser()); // getUser decodes our JWT token, into a javascript object
   // this object corresponds to the jwt payload which is defined in the server signup or login function that looks like
@@ -18,7 +18,7 @@ function App() {
 
   const addToCart = (item) => {
     console.log("handle Click!")
-    //setCart([...cart, item]);
+    setCart([...cart, item]);
   };
 
   
@@ -31,11 +31,11 @@ function App() {
     userService.logout();
     setUser(null);
   }
-  console.log(user, ' this user')
+  //console.log(user, ' this user')
   if (user) {
     return (
       <Routes>
-        <Route path="/" element={<HomePage user={user} handleLogout={handleLogout} />}
+        <Route path="/" element={<HomePage user={user} handleLogout={handleLogout} handleClick={addToCart}/>}
         />
         <Route
           path="/login"

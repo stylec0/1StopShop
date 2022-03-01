@@ -4,7 +4,7 @@ import { Button, Form, FormControl, Nav, Navbar, NavDropdown, Container } from '
 
 
 export default function Header( {user} ) {
-  console.log(user, '<---user in header')
+  //console.log(user, '<---user in header')
     return (
         <Navbar bg="primary" expand="lg" variant='dark'>
             <Container>

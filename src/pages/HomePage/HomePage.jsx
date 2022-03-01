@@ -36,8 +36,9 @@ export default function HomePage(user, handleLogout) {
     try {
       const data = await itemService.getAll();
       console.log(data, " this is data,");
+      console.log(data.items, " this is itemdata");
       setItems([...data.items]);
-     
+      //console.log(items, "<---items")
       setLoading(false);
     } catch (err) {
       console.log(err.message, " this is the error");
@@ -83,7 +84,7 @@ export default function HomePage(user, handleLogout) {
       <Header user={user.user} logout={logout}/>
       
         <h1>This is the HomePage</h1>
-        <ItemsList items={items}/>
+        <ItemsList items={items} />
      
         </>
     );

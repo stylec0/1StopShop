@@ -3,28 +3,60 @@ import { Card, Icon, Image } from 'semantic-ui-react'
 import { Link } from "react-router-dom";
 
 export default function ItemsCard(props, user) {
-    console.log(props, "<--this is props from ItemsCard" );
-	console.log(props.items.itemName, "<--separating data" );
+    console.log(props, "<--props from ItemsCard" );
+	//console.log(props.items.items[0], "<--separating data" );
+	//console.log(props._id, "<--this is ID from ItemsCard" );
 
-return (
-	<>
-	<h2>Put these in your cart!</h2>
+		return (
+			<Card onClick={() => props.handleClick()}>
+			  <Card.Content textAlign="left">
+				<Card.Header>
+				  {props.item.itemName} - ${props.item.price} <br></br>
+				</Card.Header>
+			  </Card.Content>
+			  <Card.Content>
+				<Card.Description>{props.item.description}</Card.Description>
+			  </Card.Content>
+			</Card>
+		  );
+		}
 
-	<Card key={props._id} raised>
+
+      
 	
+	/*<h2>{props.itemName}</h2>
+
+	<Card>
 	  <Card.Content textAlign="left">
 		<Card.Header>
-		 {props.itemName}
+		 {props.items[0].itemName} - {props.items[0].price}
 		</Card.Header>
 	  </Card.Content>
-	
 	<Card.Content>
-	  <Card.Description>{props.Description}</Card.Description>
+	  <Card.Description>{props.items[0].description}</Card.Description>
 	</Card.Content>
   </Card>
-  </>
-)
-}
+//  </>*/
+
+//return (
+//	<>
+//	<h2>Put these in your cart!</h2>
+
+//	<Card key={props._id} raised>
+	
+//	  <Card.Content textAlign="left">
+//		<Card.Header>
+//		 {props._id}
+//		</Card.Header>
+//	  </Card.Content>
+	
+//	<Card.Content>
+//	  <Card.Description>{props.Description}</Card.Description>
+//	</Card.Content>
+//  </Card>
+//  </>
+//)
+//}
 
 
 //const ItemCard = function(props) {
@@ -70,4 +102,4 @@ return (
 //			{list}
 //		</div>
 //	);
-//}
+//
