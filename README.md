@@ -6,13 +6,10 @@ Are you looking to get a online store setup for yourself? Are you having trouble
 
 Technologies Used: 
 - JavaScript
-- Atlas
-- Mongoose
 - mongoDB
 - Express
 - React
 - Node
-- JWT for authentication
 - Heroku
 
 Getting Started:
