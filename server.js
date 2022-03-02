@@ -3,8 +3,11 @@ const path = require('path');
 const logger = require('morgan');
 const favicon = require('serve-favicon');
 
+const dotenv = require('dotenv')
+dotenv.config({path:__dirname+'/.env'});
+
 require('./config/database');
-require('dotenv').config();
+//require('dotenv').config();
 // Require controllers here
 
 const app = express();
