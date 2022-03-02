@@ -78,9 +78,7 @@ export default function ProfilePage(props) {
         <>
       <Header handleLogout={props.handleLogout} user={props.user}/>
       <ProfileBio user={props.user} />
-        <h1>This is the ProfilePage</h1>
-        
-     
+  
         </>
     );
   }

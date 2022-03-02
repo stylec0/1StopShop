@@ -6,6 +6,7 @@ import LoginPage from "../LoginPage/LoginPage";
 import ProfilePage from "../ProfilePage/ProfilePage";
 import userService from "../../utils/userService";
 import HomePage from "../HomePage/HomePage";
+import Cart from "../Cart/Cart";
 //import itemService from "../../utils/itemService"
 
 function App() {
@@ -16,11 +17,16 @@ function App() {
   // this object corresponds to the jwt payload which is defined in the server signup or login function that looks like
   // this  const token = createJWT(user); // where user was the document we created from mongo
 
-  const addToCart = (item) => {
-    console.log("handle Click!")
+ 
+  function addToCart(item) {
+    console.log("Click!")
     setCart([...cart, item]);
-  };
+    console.log(cart, "<--Cart Items")
+  }
 
+  //const addToCart = (item) => {
+	//	setCart([...cart, item]);
+	//};
   
 
   function handleSignUpOrLogin() {
@@ -45,8 +51,10 @@ function App() {
           path="/signup"
           element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />}
         />
-        <Route path="/:username" element={<ProfilePage user={user} handleLogout={handleLogout}  />} />
-      </Routes>
+        <Route path="/:username" element={<ProfilePage user={user} handleLogout={handleLogout}  />}
+        />
+        <Route path="/:username/cart" element={<Cart user={user} handleLogout={handleLogout}  />} />
+    </Routes>
     );
   }
 

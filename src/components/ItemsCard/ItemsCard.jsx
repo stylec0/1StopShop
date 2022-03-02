@@ -2,13 +2,14 @@ import React from "react";
 import { Card, Icon, Image } from 'semantic-ui-react'
 import { Link } from "react-router-dom";
 
-export default function ItemsCard(props, user) {
+export default function ItemsCard(props, item) {
     console.log(props, "<--props from ItemsCard" );
 	//console.log(props.items.items[0], "<--separating data" );
 	//console.log(props._id, "<--this is ID from ItemsCard" );
 
+
 		return (
-			<Card onClick={() => props.handleClick()}>
+			<Card onClick={props.handleClick}>
 			  <Card.Content textAlign="left">
 				<Card.Header>
 				  {props.item.itemName} - ${props.item.price} <br></br>

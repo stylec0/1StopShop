@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const itemsCtrl = require('../../controllers/items');
+const cartsCtrl = require('../../controllers/carts');
 // /*---------- Public Routes ----------*/
 
-router.get('/', isAuthenticated, itemsCtrl.index)
+router.get('/:username/cart', isAuthenticated, cartsCtrl.index)
+//router.get('/:username/cart', usersCtrl.index);
+
 
 /*---------- Protected Routes ----------*/
 function isAuthenticated(req, res, next){

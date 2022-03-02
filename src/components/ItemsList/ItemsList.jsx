@@ -4,12 +4,12 @@ import ItemsCard from "../ItemsCard/ItemsCard";
 import Loader from "../Loader/Loader";
 
 export default function ItemsList(props) {
-  console.log(props.items, "<----props from ItemsList");
+  console.log(props, "<----props from ItemsList");
 
   let list = props.items.map((item) => {
     return (
     
-     <ItemsCard item={item} key={item._id}/>
+     <ItemsCard item={item} key={item._id} handleClick={props.handleClick}/>
     
     ) 
 });
