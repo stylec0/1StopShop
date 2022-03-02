@@ -8,28 +8,22 @@ import userService from "../../utils/userService";
 import HomePage from "../HomePage/HomePage";
 import CartPage from "../CartPage/CartPage";
 
-//import itemService from "../../utils/itemService"
-
 function App() {
-  //const [items, setItems] = useState(itemService.getAll());
-	const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([]);
 
-  const [user, setUser] = useState(userService.getUser()); // getUser decodes our JWT token, into a javascript object
-  // this object corresponds to the jwt payload which is defined in the server signup or login function that looks like
-  // this  const token = createJWT(user); // where user was the document we created from mongo
+  const [user, setUser] = useState(userService.getUser());
 
- 
+  // U Update in Crud
   function addToCart(item) {
-    console.log("Click!")
+    console.log("Click!");
     setCart([...cart, item]);
-    console.log(cart, "<--Cart Items")
+    console.log(cart, "<--Cart Items");
   }
 
   function removeFromCart(item) {
-		const cartArr = cart.filter((i) => i._id !== item._id);
-		setCart(cartArr);
-	}
-  
+    const cartArr = cart.filter((i) => i._id !== item._id);
+    setCart(cartArr);
+  }
 
   function handleSignUpOrLogin() {
     setUser(userService.getUser()); // getting the user from localstorage decoding the jwt
@@ -39,11 +33,21 @@ function App() {
     userService.logout();
     setUser(null);
   }
-  //console.log(user, ' this user')
+
   if (user) {
     return (
       <Routes>
-        <Route path="/" element={<HomePage user={user} handleLogout={handleLogout} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart}/>}
+        <Route
+          path="/"
+          element={
+            <HomePage
+              user={user}
+              handleLogout={handleLogout}
+              cart={cart}
+              addToCart={addToCart}
+              removeFromCart={removeFromCart}
+            />
+          }
         />
         <Route
           path="/login"
@@ -53,10 +57,22 @@ function App() {
           path="/signup"
           element={<SignupPage handleSignUpOrLogin={handleSignUpOrLogin} />}
         />
-        <Route path="/:username" element={<ProfilePage user={user} handleLogout={handleLogout}  />}
+        <Route
+          path="/:username"
+          element={<ProfilePage user={user} handleLogout={handleLogout} />}
         />
-        <Route path="/:username/cart" element={<CartPage user={user} handleLogout={handleLogout} cart={cart} removeFromCart={removeFromCart}/>} />
-    </Routes>
+        <Route
+          path="/:username/cart"
+          element={
+            <CartPage
+              user={user}
+              handleLogout={handleLogout}
+              cart={cart}
+              removeFromCart={removeFromCart}
+            />
+          }
+        />
+      </Routes>
     );
   }
 

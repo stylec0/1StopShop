@@ -5,59 +5,52 @@ import userService from "../../utils/userService";
 
 import { useNavigate } from "react-router-dom";
 
-
 export default function SignUpPage(props) {
-
-  const [error, setError] = useState('')
+  const [error, setError] = useState("");
   const [state, setState] = useState({
-    username: '',
-    email: '',
-    password: '',
-    passwordConf: '',
-    //bio: ''
-  })
+    username: "",
+    email: "",
+    password: "",
+    passwordConf: "",
+  });
 
-  const [selectedFile, setSelectedFile] = useState('')
+  const [selectedFile, setSelectedFile] = useState("");
 
+  const navigate = useNavigate(); // navigate hook from react-router
 
-  const navigate = useNavigate() // navigate hook from react-router
- 
-  function handleChange(e){
+  function handleChange(e) {
     setState({
       ...state,
-      [e.target.name]: e.target.value
-    })
+      [e.target.name]: e.target.value,
+    });
   }
 
-  async function handleSubmit(e){
+  async function handleSubmit(e) {
     e.preventDefault();
 
     try {
-
-      await userService.signup(state)
+      await userService.signup(state);
       // after we signup, we can navigare/and decode our token and set in local storage
-      props.handleSignUpOrLogin() // <- get the token from localstorage and decode it
+      props.handleSignUpOrLogin(); // <- get the token from localstorage and decode it
       // and set the user state in the App.js componennt
-      navigate('/') // < route the user to our home component (all our routes are defined in App.js)
-
-    } catch(err){
-      // err, is defined in the throw new Error in the 
+      navigate("/"); // < route the user to our home component (all our routes are defined in App.js)
+    } catch (err) {
+      // err, is defined in the throw new Error in the
       // userServiceSignUp
-      setError(err.message)
+      setError(err.message);
     }
-
   }
 
-  function handleFileInput(e){
+  function handleFileInput(e) {
     console.log(e.target.files);
-    setSelectedFile(e.target.files[0])
+    setSelectedFile(e.target.files[0]);
   }
 
   return (
     <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
         <Header as="h2" color="teal" textAlign="center">
-          <Image src="https://i.imgur.com/s4LrnlU.png" /> Sign Up
+          <Image src="https://i.imgur.com/s8KHD3u.png" /> Sign Up
         </Header>
         <Form autoComplete="off" onSubmit={handleSubmit}>
           <Segment stacked>
@@ -102,25 +95,3 @@ export default function SignUpPage(props) {
     </Grid>
   );
 }
-
-
-//import React, { useState } from "react";
-//import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
-
-//import userService from "../../utils/userService";
-//import { useNavigate } from "react-router-dom";
-
-//export default function SignUpPage(props) {
-//  return (
-//    <>
-//      <h1>Signup PAGE</h1>
-//      <ul>
-//        <li>Read the Login Model, You can change it to fit your needs</li>
-//        <li>
-//          Make sure you read the Login Controller, to know how it is setup to
-//          find the user!
-//        </li>
-//      </ul>
-//    </>
-//  );
-//}

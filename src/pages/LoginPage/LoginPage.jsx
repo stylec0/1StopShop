@@ -45,14 +45,10 @@ export default function LoginPage(props) {
 
   return (
     <>
-      <Grid
-        textAlign="center"
-       
-        verticalAlign="middle"
-      >
+      <Grid textAlign="center" verticalAlign="middle">
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as="h2" color="teal" textAlign="center">
-            <Image src="https://i.imgur.com/s4LrnlU.png" /> Log-in to your
+            <Image src="https://i.imgur.com/s8KHD3u.png" /> Log-in to your
             account
           </Header>
           <Form autoComplete="off" onSubmit={handleSubmit}>
@@ -93,23 +89,3 @@ export default function LoginPage(props) {
     </>
   );
 }
-
-//import React, { useState } from "react";
-//import "./LoginPage.css";
-//import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
-//import userService from "../../utils/userService";
-
-//export default function LoginPage(props) {
-//  return (
-//    <>
-//      <h1>Setup Login Page</h1>
-//      <ul>
-//        <li>Read the Login Model, You can change it to fit your needs</li>
-//        <li>
-//          Make sure you read the Login Controller, to know how it is setup to
-//          find the user!
-//        </li>
-//      </ul>
-//    </>
-//  );
-//}

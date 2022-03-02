@@ -7,77 +7,57 @@ import ProfileBio from "../../components/ProfileBio/ProfileBio";
 import Loading from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 
-
 export default function ProfilePage(props) {
-    const [items, setItems] = useState([]);
-    const [user, setUser] = useState({});
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState("");
+  const [items, setItems] = useState([]);
+  const [user, setUser] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-    const { username } = useParams();
+  const { username } = useParams();
 
-    console.log(username, " <----- this username");
+  console.log(username, " <----- this username");
 
-    //async function getProfile() {
-    //    try {
-    //      const data = await userService.getProfile(username);
-    //      console.log(data, " <- data");
-    
-    //      setLoading(() => false);
-    //      setItems(() => data.items);
-    //      setUser(() => data.user);
-    //    } catch (err) {
-    //      console.log(err);
-    //      setLoading(() => false);
-    //      setError("Profile Does not exist!");
-    //    }
-    //  }
+  useEffect(() => {
+    async function getProfile() {
+      try {
+        const data = await userService.getProfile(username);
+        console.log(data, " <- data");
 
-
-    useEffect(() => {
-
-        async function getProfile() {
-            try {
-                const data = await userService.getProfile(username);
-                console.log(data, " <- data");
-            
-                setLoading(() => false);
-                setItems(() => data.items);
-                setUser(() => data.user);
-                
-            }   catch (err) {
-                console.log(err, "This is the error");
-                setLoading(() => false);
-                setError("Profile Does not exist!");
-            }
-        }
-
-        getProfile();
-    }, [username]);
-
-    if (loading) {
-        return (
-          <>
-            <Header handleLogout={props.handleLogout} user={props.user} />
-            <Loading />
-          </>
-        );
+        setLoading(() => false);
+        setItems(() => data.items);
+        setUser(() => data.user);
+      } catch (err) {
+        console.log(err, "This is the error");
+        setLoading(() => false);
+        setError("Profile Does not exist!");
       }
-    
-      if (error) {
-        return (
-          <>
-            <Header handleLogout={props.handleLogout} user={props.user} />
-            <ErrorMessage error={error} />;
-          </>
-        );
-      }
+    }
 
+    getProfile();
+  }, [username]);
+
+  if (loading) {
     return (
-        <>
-      <Header handleLogout={props.handleLogout} user={props.user}/>
-      <ProfileBio user={props.user} />
-  
-        </>
+      <>
+        <Header handleLogout={props.handleLogout} user={props.user} />
+        <Loading />
+      </>
     );
   }
+
+  if (error) {
+    return (
+      <>
+        <Header handleLogout={props.handleLogout} user={props.user} />
+        <ErrorMessage error={error} />;
+      </>
+    );
+  }
+
+  return (
+    <>
+      <Header handleLogout={props.handleLogout} user={props.user} />
+      <ProfileBio user={props.user} />
+    </>
+  );
+}
