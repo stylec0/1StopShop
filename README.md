@@ -1,39 +1,22 @@
-## Setup 
+App Title: 1StopShop
 
-1. Clone the repo
-2. Rename the folder to your Project, you can use the `mv` command like `mv mern-boilerplate yourprojectname`
-3. Delete the `.git` file, when you are in the root of the file, you can press `ls` and you should see a `.git` file, then go ahead and run `rm -rf .git`
+Are you looking to get a online store setup for yourself? Are you having trouble finding a website solution that is easy to setup and use? 1StopShop is a simple eCommerce app that is meant to help users get started in creating their own eCommerce page. As a admin, you can easily add your own products that will allow any signed user to view your products and purchase them. Get started today! 
 
+<img src="https://i.imgur.com/lJwwLO4.png">
 
-#### Setup your git repo
+Technologies Used: 
+- JavaScript
+- Atlas
+- Mongoose
+- mongoDB
+- Express
+- React
+- Node
+- JWT for authentication
+- Heroku
 
-1. go to github and create your github and create a repo (Without a readme or liscense you can add that later!)
-2.  Then follow the directions on github that says ```…or create a new repository on the command line```
+Getting Started:
 
-it should look like this
+Link: https://project-1stopshop.herokuapp.com/
 
-```
-git init
-git add .
-git commit -m "first commit"
-git remote add origin git@git.generalassemb.ly:SEI-CC/test.git // this will be whatever your address will be
-git push -u origin master
-```
-
-#### Setup the App
-
-```npm install```
-
-*DOTENV*
-
-`touch .env`
-
-add your variables
-
-```
-DATABASE_URL=mongodb://localhost:27017/testagramV2
-BUCKET_NAME=catcollectorone
-SECRET=mysecretforjwt
-```
-
-The app is configured, to use those respective key names for the database, jwt secret and aws bucket, of course you'll have your own values
+Trello: https://trello.com/b/t6WxmXoP/project-4

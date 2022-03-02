@@ -13,7 +13,7 @@ import {
 
 export default function Header({ user, handleLogout }) {
   return (
-    <Navbar bg="primary" expand="lg" variant="dark">
+    <Navbar bg="primary" expand="xl" variant="dark">
       <Container>
         <Navbar.Brand>
           <Image src={"https://i.imgur.com/s8KHD3u.png"} avatar></Image>
