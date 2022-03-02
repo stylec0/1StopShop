@@ -1,15 +1,16 @@
 import React from "react";
 import Header from "../../components/Header/Header";
+import ItemsCart from "../../components/ItemsCart/ItemsCart";
 import userService from "../../utils/userService";
 
-export default function Cart(props) {
+export default function CartPage(props) {
 
 return (
     <>
    <Header handleLogout={props.handleLogout} user={props.user}/>
   
     <h1>This is my Shopping Cart</h1>
- 
+    <ItemsCart cart={props.cart} removeFromCart={props.removeFromCart}/>
     </>
 );
 }

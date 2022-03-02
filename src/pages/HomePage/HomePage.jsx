@@ -5,10 +5,12 @@ import * as itemService from "../../utils/itemService"
 import userService from '../../utils/userService';
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import Loading from "../../components/Loader/Loader";
+import ItemsCart from "../../components/ItemsCart/ItemsCart";
 
-export default function HomePage(user, handleLogout, handleClick) {
+export default function HomePage(props) {
   //console.log(user, "<---props from HomePage")
   const [items, setItems] = useState([]); 
+  //const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
  
@@ -50,12 +52,19 @@ export default function HomePage(user, handleLogout, handleClick) {
     //e.preventDefault();
     try {
       await userService.logout()
-      handleLogout()
+      //handleLogout()
       //Navigate("/")
     } catch (err) {
       setError(err.message)
     }
   }
+
+  // U update in Crud
+  //function addToCart(item) {
+  //  console.log("Click!")
+  //  setCart([...cart, item]);
+  //  console.log(cart, "<--Cart Items")
+  //}
   
   useEffect(() => {
     getItems();
@@ -64,7 +73,7 @@ export default function HomePage(user, handleLogout, handleClick) {
   if (loading) {
     return (
       <>
-        <Header handleLogout={handleLogout} user={user} />
+        <Header handleLogout={logout} user={props.user} />
         <Loading />
       </>
     );
@@ -73,7 +82,7 @@ export default function HomePage(user, handleLogout, handleClick) {
   if (error) {
     return (
       <>
-        <Header handleLogout={handleLogout} user={user} />
+        <Header handleLogout={logout} user={props.user} />
         <ErrorMessage error={error} />;
       </>
     );
@@ -81,10 +90,12 @@ export default function HomePage(user, handleLogout, handleClick) {
 
     return (
         <>
-      <Header user={user.user} logout={logout}/>
+      <Header user={props.user} handleLogout={logout}/>
       
-        <h1>This is the HomePage</h1>
-        <ItemsList items={items} handleClick={user.handleClick} />
+        <h1>Welcome to 1StopShop {props.user.username} !</h1>
+        <ItemsList items={items} addToCart={props.addToCart}/>
+        <h1>This is my Shopping Cart</h1>
+    <ItemsCart cart={props.cart} removeFromCart={props.removeFromCart}/>
      
         </>
     );

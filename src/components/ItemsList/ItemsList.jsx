@@ -4,19 +4,21 @@ import ItemsCard from "../ItemsCard/ItemsCard";
 import Loader from "../Loader/Loader";
 
 export default function ItemsList(props) {
-  console.log(props, "<----props from ItemsList");
 
   let list = props.items.map((item) => {
     return (
-    
-     <ItemsCard item={item} key={item._id} handleClick={props.handleClick}/>
-    
-    ) 
-});
+      <ItemsCard item={item} key={item._id} handleClick={props.addToCart}/>
+    );
+  });
+
+//  let myCart = props.items.add((cart) => {
+//    return (
+//      <ItemsCard item={cart} key={cart._id} handleClick={props.handleClick} />
+//    );
+//  });
 
   return (
     <>
-      <h1>This is the Items List</h1>
       {list}
     </>
   );

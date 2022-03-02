@@ -6,7 +6,8 @@ import LoginPage from "../LoginPage/LoginPage";
 import ProfilePage from "../ProfilePage/ProfilePage";
 import userService from "../../utils/userService";
 import HomePage from "../HomePage/HomePage";
-import Cart from "../Cart/Cart";
+import CartPage from "../CartPage/CartPage";
+
 //import itemService from "../../utils/itemService"
 
 function App() {
@@ -24,9 +25,10 @@ function App() {
     console.log(cart, "<--Cart Items")
   }
 
-  //const addToCart = (item) => {
-	//	setCart([...cart, item]);
-	//};
+  function removeFromCart(item) {
+		const cartArr = cart.filter((i) => i._id !== item._id);
+		setCart(cartArr);
+	}
   
 
   function handleSignUpOrLogin() {
@@ -41,7 +43,7 @@ function App() {
   if (user) {
     return (
       <Routes>
-        <Route path="/" element={<HomePage user={user} handleLogout={handleLogout} handleClick={addToCart}/>}
+        <Route path="/" element={<HomePage user={user} handleLogout={handleLogout} cart={cart} addToCart={addToCart} removeFromCart={removeFromCart}/>}
         />
         <Route
           path="/login"
@@ -53,7 +55,7 @@ function App() {
         />
         <Route path="/:username" element={<ProfilePage user={user} handleLogout={handleLogout}  />}
         />
-        <Route path="/:username/cart" element={<Cart user={user} handleLogout={handleLogout}  />} />
+        <Route path="/:username/cart" element={<CartPage user={user} handleLogout={handleLogout} cart={cart} removeFromCart={removeFromCart}/>} />
     </Routes>
     );
   }

@@ -1,8 +1,7 @@
-import React, { useReducer } from "react";
+import React from "react";
 import { Segment } from "semantic-ui-react";
 
 export default function ProfileBio ({user}) {
-    console.log(user.username, "<---This is the profileBio User")
     return (
         <>
         
@@ -10,7 +9,6 @@ export default function ProfileBio ({user}) {
             <h3>Welcome to your Profile {user.username}!</h3>
           </Segment>
        
-     <h1></h1>
      </>
     );
   }

@@ -38,11 +38,11 @@ export default function ProfilePage(props) {
 
         async function getProfile() {
             try {
-                const data = await userService.getProfile("admin");
+                const data = await userService.getProfile(username);
                 console.log(data, " <- data");
             
                 setLoading(() => false);
-                //setItems(() => data.items);
+                setItems(() => data.items);
                 setUser(() => data.user);
                 
             }   catch (err) {
@@ -53,7 +53,6 @@ export default function ProfilePage(props) {
         }
 
         getProfile();
-    //}, []);
     }, [username]);
 
     if (loading) {

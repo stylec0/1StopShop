@@ -3,18 +3,20 @@ import { Link } from "react-router-dom";
 import { Button, Form, FormControl, Nav, Navbar, NavDropdown, Container } from 'react-bootstrap';
 
 
-export default function Header( {user} ) {
+export default function Header( {user, handleLogout}  ) {
   //console.log(user, '<---user in header')
     return (
         <Navbar bg="primary" expand="lg" variant='dark'>
             <Container>
-          <Navbar.Brand href="/">1StopShop</Navbar.Brand>
+          <Navbar.Brand>
+            <Link to="/">1StopShop</Link>
+            </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav>
-              <Nav.Link href={`/${user.username}`}>My Profile</Nav.Link>
-              <Nav.Link href={`/${user.username}/cart`}>My Cart</Nav.Link>
-              <Nav.Link href="/login" onClick={user.logout}>LogOut</Nav.Link>
+              <Link to={`/${user.username}`}>My Profile</Link>
+              <Link to={`/${user.username}/cart`}>My Cart</Link>
+              <Link to="/login" onClick={handleLogout}>LogOut</Link>
               </Nav>
           </Navbar.Collapse>
           </Container>
