@@ -11,9 +11,3 @@ Technologies Used:
 - React
 - Node
 - Heroku
-
-Getting Started:
-
-Link: https://project-1stopshop.herokuapp.com/
-
-Trello: https://trello.com/b/t6WxmXoP/project-4
